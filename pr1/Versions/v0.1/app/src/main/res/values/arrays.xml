@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lessons">
+
+        <item>• Урок #1 | Что такое  Java</item>
+        <item>• Урок #2 | Импорт</item>
+        <item>• Урок #3 | Коментарии</item>
+        <item>• Урок #4 | Переменнные</item>
+        <item>• Уро• Урок #7 | Математикак #5 | Операторы</item>
+        <item>• Урок #6 | Типы данных</item>
+        <item>• Урок #7 | Математика</item>
+        <item>• Урок #8 | Логические операторы сравнения</item>
+        <item>• Урок #9 | Условный оператор if</item>
+        <item>• Урок #10 | Оператор switch</item>
+        <item>• Урок #11 | Цикл while</item>
+        <item>• Урок #12 | Цикл for</item>
+        <item>• Урок #13 | Массивы</item>
+        <item>• Урок #14 | Двухмерные массивы</item>
+        <item>• Урок #15 | Методы</item>
+        <item>• Урок #16 | Повторение</item>
+    </string-array>
+</resources>
