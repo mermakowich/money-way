@@ -9,14 +9,14 @@
         android:id="@+id/expense_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/expense_hint"/>
+        android:hint="Введите значение (руб.)"/>
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:text="@string/add_button_label"/>
+        android:text="Добавить"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/expense_list"

@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 String expenseDescription = expenseInput.getText().toString();
                 if (!expenseDescription.isEmpty()) {
                     Expense expense = new Expense(expenseDescription);
-                    expenses.add(expense);
-                    expenseAdapter.notifyDataSetChanged();
                     expenseInput.setText("");
                 }
             }
