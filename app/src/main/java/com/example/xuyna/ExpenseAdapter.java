@@ -25,7 +25,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
             super(itemView);
             description = itemView.findViewById(R.id.expense_description);
         }
-    }e
+    }
 
     @Override
     public ExpenseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
