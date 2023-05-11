@@ -1,9 +1,6 @@
 package com.example.xuyna;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,9 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +43,37 @@ public class MainActivity extends AppCompatActivity {
         expenseList.setLayoutManager(new LinearLayoutManager(this));
         expenseList.setAdapter(expenseAdapter);
 
+        PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+        mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+        ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+        mobilityEntries.add(new PieEntry(75f, "Потрачено"));
+        mobilityEntries.add(new PieEntry(25f, "Осталось"));
+
+        PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+        mobilityDataSet.setSliceSpace(5f);
+        mobilityDataSet.setSelectionShift(0f);
+        mobilityDataSet.setValueTextSize(12f);
+        mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+        int[] mobilityColor = {Color.rgb(170, 51, 78), Color.rgb(233, 157, 174)};
+
+        mobilityDataSet.setColors(mobilityColor);
+
+        PieData mobilityData = new PieData(mobilityDataSet);
+
+        mobilityPieChart.setData(mobilityData);
+        mobilityPieChart.setUsePercentValues(false);
+        mobilityPieChart.setHoleRadius(75f);
+        mobilityPieChart.setTransparentCircleRadius(100f);
+        mobilityPieChart.getDescription().setEnabled(false);
+        mobilityPieChart.setDrawEntryLabels(false);
+        mobilityPieChart.getLegend().setEnabled(false);
+        mobilityPieChart.setEntryLabelTextSize(20f);
+        mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+        mobilityPieChart.setCenterTextSize(50f);
+        mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,4 +103,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
