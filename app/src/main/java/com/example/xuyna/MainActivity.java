@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -26,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText expenseInput;
     private Button addButton;
-    private RecyclerView expenseList;
     private ExpenseAdapter expenseAdapter;
     private List<Expense> expenses = new ArrayList<>();
 
@@ -35,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        expenseInput = findViewById(R.id.expense_input);
+        expenseInput = findViewById(R.id.edit_text_input);
         addButton = findViewById(R.id.add_button);
-        expenseList = findViewById(R.id.expense_list);
 
         expenseAdapter = new ExpenseAdapter(expenses);
-        expenseList.setLayoutManager(new LinearLayoutManager(this));
-        expenseList.setAdapter(expenseAdapter);
 
         PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
         mobilityPieChart.setDragDecelerationFrictionCoef(1f);
@@ -80,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText editText = findViewById(R.id.edit_text_input);
                 TextView textView = findViewById(R.id.text_view_output);
+                textView.setText(textView.getText().toString() + "\n" + editText.getText().toString());
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
