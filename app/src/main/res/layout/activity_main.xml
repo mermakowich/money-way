@@ -17,14 +17,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:text="Добавить" />
+        android:text="Добавить"/>
 
 
     <TextView
         android:id="@+id/text_view_output"
         android:layout_width="363dp"
         android:layout_height="230dp"
-        android:text="писюн))" />
+        android:text="Ваши траты:" />
+
+    <EditText
+        android:id="@+id/edit_text_input1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите значение (руб.)" />
+
+    <Button
+        android:id="@+id/add_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Добавить"/>
+
+
+    <TextView
+        android:id="@+id/text_view_output1"
+        android:layout_width="363dp"
+        android:layout_height="230dp"
+        android:text="Ваши расходы:" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/mobility_pie_chart"

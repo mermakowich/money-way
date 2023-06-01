@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -97,6 +104,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText1 = findViewById(R.id.edit_text_input);
+                TextView textView1 = findViewById(R.id.text_view_output);
+                textView1.setText(textView1.getText().toString() + "\n" + editText1.getText().toString() + "₽");
+                editText1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }});
+                String expenseDescription = expenseInput.getText().toString();
+                if (!expenseDescription.isEmpty()) {
+                    Expense expense = new Expense(expenseDescription);
+                    expenseInput.setText("");
+                }
+            }
+        });
+
     }
 
 }
