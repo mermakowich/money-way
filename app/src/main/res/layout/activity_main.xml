@@ -1,65 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edit_text_input"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите значение (руб.)" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="139dp"
+            app:srcCompat="@drawable/photo_2023_06_03_01_58_39" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/mobility_pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="286dp"
+            android:layout_x="45dp"
+            android:layout_y="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32"></com.github.mikephil.charting.charts.PieChart>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ваши траты:" />
+
+        <EditText
+            android:id="@+id/edit_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите значение (руб.)"
+            android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/add_button"
-        android:layout_width="wrap_content"
+        android:layout_width="506dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Добавить"/>
+        android:text="Добавить"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="478dp"
+            android:layout_height="wrap_content"
+            android:text="удалить последнее значение"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/text_view_output"
-        android:layout_width="363dp"
-        android:layout_height="230dp"
-        android:text="Ваши траты:" />
+        <ListView
+            android:id="@+id/list_view_output"
+            android:layout_width="wrap_content"
+            android:layout_height="190dp"
+            android:cacheColorHint="#FFFFFF"
+            android:text="Ваши траты:"
+            android:textColor="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/edit_text_input1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите значение (руб.)" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ваши доходы:" />
 
-    <Button
-        android:id="@+id/add_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Добавить"/>
+        <EditText
+            android:id="@+id/edit_text_input1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите значение (руб.)"
+            android:inputType="numberDecimal" />
 
+        <Button
+            android:id="@+id/add_button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:text="Добавить" />
 
-    <TextView
-        android:id="@+id/text_view_output1"
-        android:layout_width="363dp"
-        android:layout_height="230dp"
-        android:text="Ваши расходы:" />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="удалить последнее значение" />
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/mobility_pie_chart"
-        android:layout_width="367dp"
-        android:layout_height="300dp"
-        android:layout_x="45dp"
-        android:layout_y="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32">
+        <ListView
+            android:id="@+id/list_view_output1"
+            android:layout_width="wrap_content"
+            android:layout_height="198dp"
+            android:text="Ваши расходы:" />
 
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="удалить всё значения" />
 
-    </com.github.mikephil.charting.charts.PieChart>
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:text="выйти"
+            android:layout_gravity="center"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+

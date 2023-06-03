@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_home"
+        android:title="home"
+        android:icon="@drawable/homeic" />
+
+    <item
+        android:id="@+id/bottom_support"
+        android:title="support"
+        android:icon="@drawable/supportic" />
+
+    <item
+        android:id="@+id/bottom_downloads"
+        android:title="downloads"
+        android:icon="@drawable/baseline_south_24" />
+
+
+
+
+</menu>

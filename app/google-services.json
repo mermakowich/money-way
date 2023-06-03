@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "725708637809",
+    "project_id": "money-way-181de",
+    "storage_bucket": "money-way-181de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725708637809:android:afbebd47bb9ec06a4cbdd0",
+        "android_client_info": {
+          "package_name": "com.example.xuyna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725708637809-h7kq00ti4431324mbgil9gvdqo8m9idg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSaIeGJuvQcH0ne862JHO_BRaLDJOVR5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725708637809-h7kq00ti4431324mbgil9gvdqo8m9idg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
