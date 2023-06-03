@@ -39,6 +39,8 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Date currentTime = Calendar.getInstance().getTime();
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!editText.getText().toString().trim().equals("")) {
-                    arrayList.add(editText.getText() + "₽");
+                    arrayList.add(editText.getText() + "₽" + "\n" + currentTime);
                     adapter.notifyDataSetChanged();
                     Integer selectedValue = (Integer) listView.getSelectedItem();
 
@@ -237,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!editText1.getText().toString().trim().equals("")) {
-                    arrayList1.add(editText1.getText() + "₽");
+                    arrayList1.add(editText1.getText() + "₽" + "\n" + currentTime);
                     adapter1.notifyDataSetChanged();
 
                     Integer selectedValue = (Integer) listView.getSelectedItem();
@@ -352,6 +357,38 @@ public class MainActivity extends AppCompatActivity {
                 adapter.clear();
                 ArrayAdapter adapter1 = (ArrayAdapter) listView1.getAdapter();
                 adapter1.clear();
+
+                PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+                mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+                ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+                mobilityEntries.add(new PieEntry(summ, "Траты"));
+                mobilityEntries.add(new PieEntry(summ1, "Доходы"));
+
+                PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+                mobilityDataSet.setSliceSpace(5f);
+                mobilityDataSet.setSelectionShift(0f);
+                mobilityDataSet.setValueTextSize(12f);
+                mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+                int[] mobilityColor = {Color.rgb(255, 0, 0), Color.rgb(26, 255, 0)};
+
+                mobilityDataSet.setColors(mobilityColor);
+
+                PieData mobilityData = new PieData(mobilityDataSet);
+
+                mobilityPieChart.setData(mobilityData);
+                mobilityPieChart.setUsePercentValues(false);
+                mobilityPieChart.setHoleRadius(75f);
+                mobilityPieChart.setTransparentCircleRadius(100f);
+                mobilityPieChart.getDescription().setEnabled(false);
+                mobilityPieChart.setDrawEntryLabels(false);
+                mobilityPieChart.getLegend().setEnabled(false);
+                mobilityPieChart.setEntryLabelTextSize(20f);
+                mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+                mobilityPieChart.setCenterTextSize(50f);
+                mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
             }
 
 
