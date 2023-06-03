@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+
 
 
 
@@ -112,16 +116,6 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 
-
-
-
-
-
-
-
-
-
-
         addButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -129,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 if (!editText.getText().toString().trim().equals("")) {
                     arrayList.add(editText.getText() + "₽");
                     adapter.notifyDataSetChanged();
-                    editText.setText("");
                     Integer selectedValue = (Integer) listView.getSelectedItem();
 
                     String input = editText.getText().toString();
@@ -139,8 +132,41 @@ public class MainActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put(DatabaseHelper.COLUMN_VALUE, selectedValue);
                     db.insert(DatabaseHelper.TABLE_NAME, null, values);
+                    editText.setText("");
 
                 }
+
+                PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+                mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+                ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+                mobilityEntries.add(new PieEntry(summ, "Траты"));
+                mobilityEntries.add(new PieEntry(summ1, "Доходы"));
+
+                PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+                mobilityDataSet.setSliceSpace(5f);
+                mobilityDataSet.setSelectionShift(0f);
+                mobilityDataSet.setValueTextSize(12f);
+                mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+                int[] mobilityColor = {Color.rgb(255, 0, 0), Color.rgb(26, 255, 0)};
+
+                mobilityDataSet.setColors(mobilityColor);
+
+                PieData mobilityData = new PieData(mobilityDataSet);
+
+                mobilityPieChart.setData(mobilityData);
+                mobilityPieChart.setUsePercentValues(false);
+                mobilityPieChart.setHoleRadius(75f);
+                mobilityPieChart.setTransparentCircleRadius(100f);
+                mobilityPieChart.getDescription().setEnabled(false);
+                mobilityPieChart.setDrawEntryLabels(false);
+                mobilityPieChart.getLegend().setEnabled(false);
+                mobilityPieChart.setEntryLabelTextSize(20f);
+                mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+                mobilityPieChart.setCenterTextSize(50f);
+                mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
 
 
             }
@@ -150,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         Button Button4 = findViewById(R.id.button4);
         Button4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 int lastItemIndex = listView.getCount() - 1;
                 if (lastItemIndex >= 0) {
 
@@ -161,7 +187,41 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
 
+                PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+                mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+                ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+                mobilityEntries.add(new PieEntry(summ, "Траты"));
+                mobilityEntries.add(new PieEntry(summ1, "Доходы"));
+
+                PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+                mobilityDataSet.setSliceSpace(5f);
+                mobilityDataSet.setSelectionShift(0f);
+                mobilityDataSet.setValueTextSize(12f);
+                mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+                int[] mobilityColor = {Color.rgb(255, 0, 0), Color.rgb(26, 255, 0)};
+
+                mobilityDataSet.setColors(mobilityColor);
+
+                PieData mobilityData = new PieData(mobilityDataSet);
+
+                mobilityPieChart.setData(mobilityData);
+                mobilityPieChart.setUsePercentValues(false);
+                mobilityPieChart.setHoleRadius(75f);
+                mobilityPieChart.setTransparentCircleRadius(100f);
+                mobilityPieChart.getDescription().setEnabled(false);
+                mobilityPieChart.setDrawEntryLabels(false);
+                mobilityPieChart.getLegend().setEnabled(false);
+                mobilityPieChart.setEntryLabelTextSize(20f);
+                mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+                mobilityPieChart.setCenterTextSize(50f);
+                mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
+
             }
+
+
         });
 
 
@@ -180,11 +240,10 @@ public class MainActivity extends AppCompatActivity {
                 if (!editText1.getText().toString().trim().equals("")) {
                     arrayList1.add(editText1.getText() + "₽");
                     adapter1.notifyDataSetChanged();
-                    editText1.setText("");
 
                     Integer selectedValue = (Integer) listView.getSelectedItem();
 
-                    String input1 = editText.getText().toString();
+                    String input1 = editText1.getText().toString();
                     int number1 = Integer.parseInt(input1);
                     summ1 += number1;
 
@@ -192,7 +251,41 @@ public class MainActivity extends AppCompatActivity {
                     values.put(DatabaseHelper.COLUMN_VALUE, selectedValue);
                     db.insert(DatabaseHelper.TABLE_NAME, null, values);
 
+                    editText1.setText("");
+
                 }
+
+                PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+                mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+                ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+                mobilityEntries.add(new PieEntry(summ, "Траты"));
+                mobilityEntries.add(new PieEntry(summ1, "Доходы"));
+
+                PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+                mobilityDataSet.setSliceSpace(5f);
+                mobilityDataSet.setSelectionShift(0f);
+                mobilityDataSet.setValueTextSize(12f);
+                mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+                int[] mobilityColor = {Color.rgb(255, 0, 0), Color.rgb(26, 255, 0)};
+
+                mobilityDataSet.setColors(mobilityColor);
+
+                PieData mobilityData = new PieData(mobilityDataSet);
+
+                mobilityPieChart.setData(mobilityData);
+                mobilityPieChart.setUsePercentValues(false);
+                mobilityPieChart.setHoleRadius(75f);
+                mobilityPieChart.setTransparentCircleRadius(100f);
+                mobilityPieChart.getDescription().setEnabled(false);
+                mobilityPieChart.setDrawEntryLabels(false);
+                mobilityPieChart.getLegend().setEnabled(false);
+                mobilityPieChart.setEntryLabelTextSize(20f);
+                mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+                mobilityPieChart.setCenterTextSize(50f);
+                mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
             }
         });
 
@@ -212,11 +305,71 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
 
+                PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
+                mobilityPieChart.setDragDecelerationFrictionCoef(1f);
+
+                ArrayList<PieEntry> mobilityEntries = new ArrayList<>();
+                mobilityEntries.add(new PieEntry(summ, "Траты"));
+                mobilityEntries.add(new PieEntry(summ1, "Доходы"));
+
+                PieDataSet mobilityDataSet = new PieDataSet(mobilityEntries, "Label");
+                mobilityDataSet.setSliceSpace(5f);
+                mobilityDataSet.setSelectionShift(0f);
+                mobilityDataSet.setValueTextSize(12f);
+                mobilityDataSet.setValueTextColor(Color.TRANSPARENT);
+
+                int[] mobilityColor = {Color.rgb(255, 0, 0), Color.rgb(26, 255, 0)};
+
+                mobilityDataSet.setColors(mobilityColor);
+
+                PieData mobilityData = new PieData(mobilityDataSet);
+
+                mobilityPieChart.setData(mobilityData);
+                mobilityPieChart.setUsePercentValues(false);
+                mobilityPieChart.setHoleRadius(75f);
+                mobilityPieChart.setTransparentCircleRadius(100f);
+                mobilityPieChart.getDescription().setEnabled(false);
+                mobilityPieChart.setDrawEntryLabels(false);
+                mobilityPieChart.getLegend().setEnabled(false);
+                mobilityPieChart.setEntryLabelTextSize(20f);
+                mobilityPieChart.setDrawCenterText(true);
+//        mobilityPieChart.setCenterText("1020");
+                mobilityPieChart.setCenterTextSize(50f);
+                mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
+
             }
         });
 
 
 
+
+
+
+        Button Button6 = findViewById(R.id.button6);
+        Button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
+                adapter.clear();
+                ArrayAdapter adapter1 = (ArrayAdapter) listView1.getAdapter();
+                adapter1.clear();
+            }
+
+
+        });
+
+
+
+
+        Button Button7 = findViewById(R.id.button7);
+        Button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                finish();
+            }
+        });
 
         PieChart mobilityPieChart = findViewById(R.id.mobility_pie_chart);
         mobilityPieChart.setDragDecelerationFrictionCoef(1f);
@@ -249,30 +402,6 @@ public class MainActivity extends AppCompatActivity {
 //        mobilityPieChart.setCenterText("1020");
         mobilityPieChart.setCenterTextSize(50f);
         mobilityPieChart.animateY(1500, Easing.EaseInOutQuad);
-
-        Button Button6 = findViewById(R.id.button6);
-        Button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
-                adapter.clear();
-                ArrayAdapter adapter1 = (ArrayAdapter) listView1.getAdapter();
-                adapter1.clear();
-            }
-        });
-
-
-
-
-        Button Button7 = findViewById(R.id.button7);
-        Button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                finish();
-            }
-        });
 
 
     }

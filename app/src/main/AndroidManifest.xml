@@ -12,7 +12,7 @@
         android:label="money way"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Xuyna"
+        android:theme="@style/Platform.MaterialComponents.Light"
         tools:targetApi="31" >
 
         <activity
