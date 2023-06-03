@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     ViewPager2 viewPager2;
-    ViewPagerAdapter viewPagerAdapter;
     BottomNavigationView bottomNavigationView;
 
 
